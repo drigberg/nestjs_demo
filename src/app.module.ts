@@ -1,13 +1,10 @@
-import { Category } from './categories/categories.entity';
-import { Thing } from './things/things.entity';
 import { Module } from '@nestjs/common';
 import { CategoriesModule } from './categories/categories.module';
+import { Category } from './categories/categories.entity';
+import { Thing } from './things/things.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-const DB_NAME = process.env.DB_NAME;
-const DB_USER = process.env.DB_USER;
-const DB_PASSWORD = process.env.DB_PASSWORD;
-const DB_HOST = process.env.DB_HOST;
+const { DB_USER, DB_PASSWORD, DB_NAME, DB_HOST } = process.env;
 
 @Module({
   imports: [
@@ -21,7 +18,6 @@ const DB_HOST = process.env.DB_HOST;
       entities: [Category, Thing],
       synchronize: true,
     }),
-    TypeOrmModule.forRoot(),
     CategoriesModule,
   ],
 })

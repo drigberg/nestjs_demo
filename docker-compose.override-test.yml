@@ -1,0 +1,4 @@
+version: '3'
+services:
+  nestjs-demo:
+    command: npm run test
